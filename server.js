@@ -188,7 +188,7 @@ app.post('/', (request,response) =>{
   response.json({status: 'Congratulations! Your response has been recorded.'});
 })
 
-app.get(response.send('Working'))
+app.get('/',(request,response) => {response.send('Working')})
 
 app.listen(process.env.PORT || 3000, () =>{
   console.log('app is running');
