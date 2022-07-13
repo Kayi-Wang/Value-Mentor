@@ -172,23 +172,9 @@ app.post('/', (request,response) =>{
   }
 
 
-
-  fs.writeFile('./'+ email +'.txt', returnString, err => {
-    if (err){
-      console.log(err);
-    }
-  });
-
-  fs.writeFile('./'+ email +'JSON.txt', JSON.stringify(body), err => {
-    if (err){
-      console.log(err);
-    }
-  });
-
-  response.json({status: 'Congratulations! Your response has been recorded.'});
+  response.json({status: returnString});
 })
 
-app.get('/',(request,response) => {response.send('Working')})
 
 app.listen(process.env.PORT || 3000, () =>{
   console.log('app is running');
