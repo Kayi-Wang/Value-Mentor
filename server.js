@@ -15,6 +15,7 @@ app.post('/', (request,response) =>{
   const email = request.body.email;
   var returnString = '&e=' + request.body.email + '&u=' + request.body.firstName + '+' + request.body.lastName;
   var rankingCount = 1;
+  var totalCount = 0;
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].id === 1){
@@ -148,26 +149,52 @@ app.post('/', (request,response) =>{
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === null){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(rankingCount);
+      totalCount++;
+    }
+  }
+
+  for(let i = 0; i < body.outputArray.length; i++){
+    if(body.outputArray[i].priority === 'High'){
+      totalCount++;
+      break;
+    }
+  }
+  for(let i = 0; i < body.outputArray.length; i++){
+    if(body.outputArray[i].priority === 'Mid'){
+      totalCount++;
+      break;
+    }
+  }
+  for(let i = 0; i < body.outputArray.length; i++){
+    if(body.outputArray[i].priority === 'Low'){
+      totalCount++;
+      break;
+    }
+  }
+
+
+  for(let i = 0; i < body.outputArray.length; i++){
+    if(body.outputArray[i].priority === null){
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - rankingCount*(100 / totalCount));
       rankingCount++;
     }
   }
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === 'High'){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(rankingCount);
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - rankingCount*(100 / totalCount));
     }
   }
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === 'Mid'){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(rankingCount + 1);
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - (rankingCount + 1)*(100 / totalCount));
     }
   }
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === 'Low'){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(rankingCount + 2);
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - (rankingCount + 2) *(100 / totalCount));
     }
   }
 
