@@ -179,7 +179,8 @@ app.post('/', (request,response) =>{
   }
 
 
-  response.json({status: 'Congratulations! Your response has been recorded.'});
+  response.json({status: 'Congratulations! Your response has been recorded.',
+                 return: 'https://www.minessence.net/missioncontrolbeta2/Reports_Indiv/KVI-IVR.aspx?' + returnString});
 })
 
 
