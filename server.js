@@ -175,26 +175,26 @@ app.post('/', (request,response) =>{
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === null){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - rankingCount*(100 / totalCount));
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(Math.floor(100 - rankingCount*(100 / totalCount)));
       rankingCount++;
     }
   }
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === 'High'){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - rankingCount*(100 / totalCount));
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(Math.floor(100 - rankingCount*(100 / totalCount)));
     }
   }
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === 'Mid'){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - (rankingCount + 1)*(100 / totalCount));
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(Math.floor(100 - (rankingCount + 1)*(100 / totalCount)));
     }
   }
 
   for(let i = 0; i < body.outputArray.length; i++){
     if(body.outputArray[i].priority === 'Low'){
-      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(100 - (rankingCount + 2) *(100 / totalCount));
+      returnString = returnString + '&v' + body.outputArray[i].id + '=' + String(Math.floor(100 - (rankingCount + 2) *(100 / totalCount)));
     }
   }
 
