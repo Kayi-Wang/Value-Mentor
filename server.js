@@ -179,7 +179,7 @@ app.post('/', (request,response) =>{
   }
 
 
-  response.json({status: returnString});
+  response.json({status: 'Congratulations! Your response has been recorded.'});
 })
 
 
