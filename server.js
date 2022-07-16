@@ -14,7 +14,7 @@ app.post('/', (request,response) =>{
   const body = request.body;
   const email = request.body.email;
   var returnString = '&e=' + request.body.email + '&u=' + request.body.firstName + '+' + request.body.lastName;
-  var rankingCount = 1;
+  var rankingCount = 0;
   var totalCount = 0;
 
   for(let i = 0; i < body.outputArray.length; i++){
